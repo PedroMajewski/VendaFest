@@ -1,10 +1,15 @@
 package app.entity;
 
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,24 +20,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
-	
-	// CLASSE DE ENTIDADE DO USUÁRIO, AMBOS O NOME E A SENHA SÃO OBRIGARÓRIOS,
-	// RELACIONAMENTOS: 
-	
-	
+public class Evento {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotBlank(message = "O campo NOME não pode ser vazio!")
+	@Size(max = 100)
+	@NotBlank(message = "O nome do usuario não pode ser nulo!")
 	private String nome;
 	
-	@NotBlank(message = "O campo SENHA não pode ser vazio!")
-	private String senha;
+	@Size(max = 250)
+	private String descricao;
 	
-	// VALOR BOOLEANO QUE IDENTIFICA SE O USUÁRIO É ADMINISTRADOR (CAPAZ)
-	// CASO FOR, VAI PODER TIRAR PRODUTOS DO AR PARA QUE O VENDEDOR NÃO CONSIGA
-	// UTILIZAR.
-	private Boolean isAdmin;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime dataHora;
+	
 }
