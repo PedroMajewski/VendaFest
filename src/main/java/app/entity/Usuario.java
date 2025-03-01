@@ -36,8 +36,4 @@ public class Usuario {
 	// CASO FOR, VAI PODER TIRAR PRODUTOS DO AR PARA QUE O VENDEDOR NÃO CONSIGA
 	// UTILIZAR.
 	private Boolean isAdmin;
-	
-	// VALOR BOOLEANO QUE IDENTIFICA SE O USUÁRIO É CLIENTE OU NÃO,
-	// CASO FOR, TERÁ ACESSO A ÁREA DE COMPRAS SOMENTE.
-	private Boolean isCliente;
 }
