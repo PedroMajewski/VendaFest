@@ -1,15 +1,16 @@
 package app.entity;
 
-import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Entity
 @Getter
@@ -18,18 +19,18 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Usuario {
 	
-	// CLASSE DE ENTIDADE DO USUÁRIO, AMBOS O NOME E A SENHA SÃO OBRIGARÓRIOS,
-	// RELACIONAMENTOS: 
-	
+	// CLASSE DE ENTIDADE DO USUÁRIO, AMBOS O NOME E A SENHA SÃO OBRIGARÓRIOS
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotBlank(message = "O campo NOME não pode ser vazio!")
+	@Size(max = 75)
 	private String nome;
 	
 	@NotBlank(message = "O campo SENHA não pode ser vazio!")
+	@Size(min = 8, max = 16)
 	private String senha;
 	
 	// VALOR BOOLEANO QUE IDENTIFICA SE O USUÁRIO É ADMINISTRADOR (CAPAZ)
