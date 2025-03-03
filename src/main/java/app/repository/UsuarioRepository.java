@@ -1,5 +1,13 @@
 package app.repository;
 
-public class UsuarioRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import app.entity.Usuario;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+	
+	public List<Usuario> findBynome(String nome);
+	
 }
